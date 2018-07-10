@@ -108,7 +108,8 @@ Department of Mechanical Engineering, MIT; bgcho@mit.edu
 %\simplesumm{}
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-% \abstract{A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: 1) Background: Place the question addressed in a broad context and highlight the purpose of the study; 2) Methods: Describe briefly the main methods or treatments applied; 3) Results: Summarize the article's main findings; and 4) Conclusion: Indicate the main conclusions or interpretations. The abstract should be an objective representation of the article, it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.}
+\abstract{Number density of a fish group and its' 3-D distribution are estimated from 2-D horizontal maps by applying an extended Kalman filter to 2-D multi-frequency acoustic images. 
+The inherent limitation in resolving the vertical fish distribution from 2-D images is overcome by utilizing a unique frequency dependence in acoustic scattering from fish. Air-filled swim bladder inside a fish is a strong acoustic scatterer, where its' frequency response resembles that of a damped-harmonic oscillator. This frequency response is sensitive and nonlinearly related to fish occupancy depth, which enables estimation of their vertical distribution using multi-frequency images.}
 
 % Keywords
 % \keyword{keyword 1; keyword 2; keyword 3 (list three to ten pertinent keywords specific to the article, yet reasonably common within the subject discipline.)}
@@ -141,13 +142,16 @@ Department of Mechanical Engineering, MIT; bgcho@mit.edu
 
 
 \section{Materials and Methods}
-\subsection{Extendend Kalman Filter for Accounting Acoustic Attenuation Caused by Dense Fish Shoals}
-An Extended Kalman Filter (EKF) is designed to account for acoustic attenuation caused by dense fish shoals. 
-In cases where a fish shoal is sufficiently dense and the acoustic transmission frequency is near the resonance peak frequency of the fish swim bladder scattering, acoustic wave attenuates as it further propagates through this dense fish shoal. 
-Fish total population can be under-estimated because of the attenuation.
-It is therefore desirable to compensate for the accumulated attenuation.
-The attenuation is caused by a number of factors including the fish depth distribution, the amount of air in their swim bladder, density and acoustic transmission frequency, 
-State of a fish shoal is expressed as an unknown state vector that consists of 7 parameters about a shoal as
+% \subsection{Extendend Kalman Filter for Accounting Acoustic Attenuation Caused by Dense Fish Shoals}
+\subsection{Extendend Kalman Filter for Number Density and Depth Distribution Estimation of Dense Fish Groups}
+An Extended Kalman Filter (EKF) is designed to estimate the number density and depth distribution of a dense fish group.
+% An Extended Kalman Filter (EKF) is designed to account for acoustic attenuation caused by dense fish shoals. 
+When a fish group is sufficiently dense and the acoustic transmission frequency is near the resonance frequency of fish swim bladder scattering, acoustic wave significantly attenuates as it further propagates through the dense fish shoal. 
+This attenuation is caused by a number of factors including fish depth distribution, amount of air inside their swim bladder, number density, and acoustic transmission frequency.
+In such cases, it is desirable to compensate for the accumulated attenuation since the total population can be under-estimated.
+The presented EKF accounts for acoustic attenuation and simultaneously estimates number density and physical parameters that describe the vertical distribution of a fish group.
+
+State of a fish shoal is expressed as an unknown state vector that consists of 7 parameters about a group as
 
 \begin{equation}
 \label{eq:stateVec}
@@ -280,6 +284,7 @@ Areal fish number density along the range within the fish shoal is assumed as sh
 \end{figure}
 
 \noindent Synthetic Scattering Strength (SS) from this fish shoal is shown in Figures \ref{fig:ssSyntheticWithNoise} and \ref{fig:ssSyntheticWithoutNoise}, where Figure \ref{fig:ssSyntheticWithNoise} includes a zero-mean Gaussian white noise with 3 dB standard deviation and Figure \ref{fig:ssSyntheticWithoutNoise} shows the SS without any noise.
+SS at 1465 Hz and 1600 Hz are strong at close ranges but also shows the most attenuation as shown in the in Figure \ref{fig:ssSyntheticWithoutNoise} because the resonance scattering frequency is near 1500 Hz as shown in \ref{fig:tsSynthetic}.
 
 \begin{figure}[htp!]
   \centering
@@ -290,16 +295,16 @@ Areal fish number density along the range within the fish shoal is assumed as sh
 
 \begin{figure}[htp!]
   \centering
-  {\includegraphics[width=0.7\textwidth]{{./figs/ssSynthetic20180515}.eps}}
+  {\includegraphics[width=0.6\textwidth]{{./figs/ssSynthetic20180515}.eps}}
   \caption{Synthetic Scattering Strength (SS) through the fish shoal without noise}
   \label{fig:ssSyntheticWithoutNoise}
 \end{figure}
 
-\noindent SS at 850 and 1465 Hz are strongest at close ranges but also shows the most attenuation as shown in the Target Strength curve in Figure \ref{fig:tsSynthetic}.
+% \noindent SS at 850 and 1465 Hz are strongest at close ranges but also shows the most attenuation as shown in the Target Strength curve in Figure \ref{fig:tsSynthetic}.
 
 \begin{figure}[htp!]
   \centering
-  {\includegraphics[width=0.7\textwidth]{{./figs/tsSynthetic20180515}.eps}}
+  {\includegraphics[width=0.5\textwidth]{{./figs/tsSynthetic20180515}.eps}}
   \caption{Synthetic Target Strength (TS) at the front and end of the shoal}
   \label{fig:tsSynthetic}
 \end{figure}
@@ -312,7 +317,7 @@ The process noise covariance matrix $\boldsymbol{R}_k$ is also a diagonal matrix
 
 First, the EKF model shows the state estimate using data without any noise.
 The state estimate is shown in Figures \ref{fig:ekfEstimationWithoutNoise1} and \ref{fig:ekfEstimationWithoutNoise2}.
-In general the estimation is better at closer range steps and deviates from the ground truth as the range steps increases.
+In general, the estimation is better at closer range steps and deviates from the ground truth as the range steps increases.
 Figure \ref{fig:ekfEstimationWithoutNoise1} shows the EKF estimation of the fish shoal vertical distribution.
 Mean occupancy depth estimation of the upper and lower fish layers shown in Figure \ref{fig:ekfEstimationWithoutNoise1} (a) and (c) respectively show errors from the ground truth mean occupancy depths to within 4 \% and 20 \% with respect to their ground truth vertical thicknesses.
 Shoal vertical thickness estimation of the upper and lower fish layers shown in Figure \ref{fig:ekfEstimationWithoutNoise1} (b) and (d) respectively show errors from the ground truth vertical thicknesses to within 8 \% and 30 \% with respect to their ground truth vertical thicknesses.
@@ -320,7 +325,7 @@ EKF estimation of the fractional population of the upper fish layer, neutral buo
 
 \begin{figure}[htp!]
   \centering
-  {\includegraphics[width=1\textwidth]{{./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515}.eps}}
+  {\includegraphics[width=0.8\textwidth]{{./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515}.eps}}
   \caption{Extended Kalman Filter estimation of the fish shoal depth distribution without any noise in the measurements.}
   \label{fig:ekfEstimationWithoutNoise1}
 \end{figure}
@@ -335,7 +340,7 @@ EKF estimation of the fractional population of the upper fish layer, neutral buo
 
 \begin{figure}[htp!]
   \centering
-  {\includegraphics[width=1\textwidth]{{./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515}.eps}}
+  {\includegraphics[width=0.8\textwidth]{{./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515}.eps}}
   \caption{Extended Kalman Filter estimation of the fish shoal depth distribution in the presence of zero-mean Gaussian white measurement noise with 3 dB standard deviation.}
   \label{fig:ekfEstimationWithNoise1}
 \end{figure}
