@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.23)  10 JUL 2018 17:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.23)  11 JUL 2018 00:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1331,7 +1331,7 @@ Package epstopdf Info: Source file: <Definitions/logo-mdpi.eps>
 converted-to.pdf Definitions/logo-mdpi.eps>
 (epstopdf)             \includegraphics on input line 139.
 Package epstopdf Info: Output file is already uptodate.
-<Definitions/logo-mdpi-eps-converted-to.pdf, id=24, 88.33pt x 58.2175pt>
+<Definitions/logo-mdpi-eps-converted-to.pdf, id=28, 88.33pt x 58.2175pt>
 File: Definitions/logo-mdpi-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Definitions/logo-mdpi-eps-converted-to.pdf>
@@ -1425,20 +1425,20 @@ converted-to.pdf>
 (epstopdf)                    size: 9256 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/syntheticConfigurat
 ion20180515-eps-converted-to.pdf ./figs/syntheticConfiguration20180515.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 279.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figs/syntheticConfiguration20180515-eps-converted-to.pdf, id=56, 587.19376pt
+<./figs/syntheticConfiguration20180515-eps-converted-to.pdf, id=63, 587.19376pt
  x 231.86626pt>
 File: ./figs/syntheticConfiguration20180515-eps-converted-to.pdf Graphic file (
 type pdf)
 
 <use ./figs/syntheticConfiguration20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/syntheticConfiguration20180515-eps-converted-to
-.pdf used on input line 271.
+.pdf used on input line 279.
 (pdftex.def)             Requested size: 355.0919pt x 140.21405pt.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <9> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 272.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 280.
 Package epstopdf Info: Source file: <./figs/nASynthetic20180515.eps>
 (epstopdf)                    date: 2018-07-05 16:35:04
 (epstopdf)                    size: 17908 bytes
@@ -1448,15 +1448,15 @@ o.pdf>
 (epstopdf)                    size: 7203 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/nASynthetic20180515
 -eps-converted-to.pdf ./figs/nASynthetic20180515.eps>
-(epstopdf)             \includegraphics on input line 281.
+(epstopdf)             \includegraphics on input line 290.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figs/nASynthetic20180515-eps-converted-to.pdf, id=58, 676.5275pt x 557.08125
+<./figs/nASynthetic20180515-eps-converted-to.pdf, id=65, 676.5275pt x 557.08125
 pt>
 File: ./figs/nASynthetic20180515-eps-converted-to.pdf Graphic file (type pdf)
  <use ./figs/nASynthetic20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/nASynthetic20180515-eps-converted-to.pdf used o
-n input line 281.
+n input line 290.
 (pdftex.def)             Requested size: 221.9316pt x 182.74933pt.
 Package epstopdf Info: Source file: <./figs/syntheticSSCombined_20180515.eps>
 (epstopdf)                    date: 2018-07-05 16:35:04
@@ -1467,16 +1467,16 @@ nverted-to.pdf>
 (epstopdf)                    size: 483912 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/syntheticSSCombined
 _20180515-eps-converted-to.pdf ./figs/syntheticSSCombined_20180515.eps>
-(epstopdf)             \includegraphics on input line 291.
+(epstopdf)             \includegraphics on input line 300.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figs/syntheticSSCombined_20180515-eps-converted-to.pdf, id=65, 2629.825pt x 
+<./figs/syntheticSSCombined_20180515-eps-converted-to.pdf, id=72, 2629.825pt x 
 1088.065pt>
 File: ./figs/syntheticSSCombined_20180515-eps-converted-to.pdf Graphic file (ty
 pe pdf)
  <use ./figs/syntheticSSCombined_20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/syntheticSSCombined_20180515-eps-converted-to.p
-df used on input line 291.
+df used on input line 300.
 (pdftex.def)             Requested size: 443.86319pt x 183.6404pt.
 Package epstopdf Info: Source file: <./figs/ssSynthetic20180515.eps>
 (epstopdf)                    date: 2018-07-05 16:35:04
@@ -1487,15 +1487,15 @@ o.pdf>
 (epstopdf)                    size: 10832 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/ssSynthetic20180515
 -eps-converted-to.pdf ./figs/ssSynthetic20180515.eps>
-(epstopdf)             \includegraphics on input line 298.
+(epstopdf)             \includegraphics on input line 307.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figs/ssSynthetic20180515-eps-converted-to.pdf, id=66, 926.46124pt x 413.545p
+<./figs/ssSynthetic20180515-eps-converted-to.pdf, id=73, 926.46124pt x 413.545p
 t>
 File: ./figs/ssSynthetic20180515-eps-converted-to.pdf Graphic file (type pdf)
  <use ./figs/ssSynthetic20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/ssSynthetic20180515-eps-converted-to.pdf used o
-n input line 298.
+n input line 307.
 (pdftex.def)             Requested size: 266.32062pt x 118.87747pt.
 Package epstopdf Info: Source file: <./figs/tsSynthetic20180515.eps>
 (epstopdf)                    date: 2018-07-05 16:35:04
@@ -1506,15 +1506,15 @@ o.pdf>
 (epstopdf)                    size: 13569 bytes
 (epstopdf)             Command: <repstopdf --outfile=./figs/tsSynthetic20180515
 -eps-converted-to.pdf ./figs/tsSynthetic20180515.eps>
-(epstopdf)             \includegraphics on input line 307.
+(epstopdf)             \includegraphics on input line 316.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figs/tsSynthetic20180515-eps-converted-to.pdf, id=67, 704.6325pt x 412.54124
+<./figs/tsSynthetic20180515-eps-converted-to.pdf, id=74, 704.6325pt x 412.54124
 pt>
 File: ./figs/tsSynthetic20180515-eps-converted-to.pdf Graphic file (type pdf)
  <use ./figs/tsSynthetic20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/tsSynthetic20180515-eps-converted-to.pdf used o
-n input line 307.
+n input line 316.
 (pdftex.def)             Requested size: 221.9316pt x 129.9323pt.
  [3 <./figs/syntheticConfiguration20180515-eps-converted-to.pdf> <./figs/nASynt
 hetic20180515-eps-converted-to.pdf>] [4 <./figs/syntheticSSCombined_20180515-ep
@@ -1531,17 +1531,17 @@ Package epstopdf Info: Source file: <./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z
 (epstopdf)             Command: <repstopdf --outfile=./figs/ekfEstimationWithou
 tNoiseH1_Z1_H2_Z2_20180515-eps-converted-to.pdf ./figs/ekfEstimationWithoutNois
 eH1_Z1_H2_Z2_20180515.eps>
-(epstopdf)             \includegraphics on input line 328.
+(epstopdf)             \includegraphics on input line 336.
 Package epstopdf Info: Output file is already uptodate.
 
 <./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515-eps-converted-to.pdf, id=
-298, 1763.58875pt x 1212.53pt>
+305, 1763.58875pt x 1212.53pt>
 File: ./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515-eps-converted-to.pdf
  Graphic file (type pdf)
 
 <use ./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515-e
-ps-converted-to.pdf used on input line 328.
+ps-converted-to.pdf used on input line 336.
 (pdftex.def)             Requested size: 355.0919pt x 244.12985pt.
 Package epstopdf Info: Source file: <./figs/ekfEstimationWithoutNoiseRatio_Znb_
 nA_20180515.eps>
@@ -1554,18 +1554,18 @@ nA_20180515-eps-converted-to.pdf>
 (epstopdf)             Command: <repstopdf --outfile=./figs/ekfEstimationWithou
 tNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf ./figs/ekfEstimationWithoutNoi
 seRatio_Znb_nA_20180515.eps>
-(epstopdf)             \includegraphics on input line 335.
+(epstopdf)             \includegraphics on input line 343.
 Package epstopdf Info: Output file is already uptodate.
 
 <./figs/ekfEstimationWithoutNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf, id
-=299, 2456.17625pt x 607.26875pt>
+=306, 2456.17625pt x 607.26875pt>
 File: ./figs/ekfEstimationWithoutNoiseRatio_Znb_nA_20180515-eps-converted-to.pd
 f Graphic file (type pdf)
 
 <use ./figs/ekfEstimationWithoutNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf
 >
 Package pdftex.def Info: ./figs/ekfEstimationWithoutNoiseRatio_Znb_nA_20180515-
-eps-converted-to.pdf used on input line 335.
+eps-converted-to.pdf used on input line 343.
 (pdftex.def)             Requested size: 443.86319pt x 109.73917pt.
 Package epstopdf Info: Source file: <./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_2
 0180515.eps>
@@ -1578,17 +1578,17 @@ Package epstopdf Info: Source file: <./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_2
 (epstopdf)             Command: <repstopdf --outfile=./figs/ekfEstimationWithNo
 iseZ1_H1_Z2_H2_20180515-eps-converted-to.pdf ./figs/ekfEstimationWithNoiseZ1_H1
 _Z2_H2_20180515.eps>
-(epstopdf)             \includegraphics on input line 343.
+(epstopdf)             \includegraphics on input line 359.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515-eps-converted-to.pdf, id=300
+<./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515-eps-converted-to.pdf, id=311
 , 1694.33pt x 1166.3575pt>
 File: ./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515-eps-converted-to.pdf Gr
 aphic file (type pdf)
 
 <use ./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515-eps-
-converted-to.pdf used on input line 343.
+converted-to.pdf used on input line 359.
 (pdftex.def)             Requested size: 355.0919pt x 244.42618pt.
 Package epstopdf Info: Source file: <./figs/ekfEstimationWithNoiseRatio_Znb_nA_
 20180515.eps>
@@ -1601,41 +1601,41 @@ Package epstopdf Info: Source file: <./figs/ekfEstimationWithNoiseRatio_Znb_nA_
 (epstopdf)             Command: <repstopdf --outfile=./figs/ekfEstimationWithNo
 iseRatio_Znb_nA_20180515-eps-converted-to.pdf ./figs/ekfEstimationWithNoiseRati
 o_Znb_nA_20180515.eps>
-(epstopdf)             \includegraphics on input line 350.
+(epstopdf)             \includegraphics on input line 366.
 Package epstopdf Info: Output file is already uptodate.
 
-<./figs/ekfEstimationWithNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf, id=30
-1, 2439.1125pt x 584.1825pt>
+<./figs/ekfEstimationWithNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf, id=31
+2, 2439.1125pt x 584.1825pt>
 File: ./figs/ekfEstimationWithNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf G
 raphic file (type pdf)
 
 <use ./figs/ekfEstimationWithNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf>
 Package pdftex.def Info: ./figs/ekfEstimationWithNoiseRatio_Znb_nA_20180515-eps
--converted-to.pdf used on input line 350.
+-converted-to.pdf used on input line 366.
 (pdftex.def)             Requested size: 443.86319pt x 106.30711pt.
 
-[5 <./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515-eps-converted-to.pdf>]
-[6 <./figs/ekfEstimationWithoutNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf>
- <./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515-eps-converted-to.pdf> <./fi
-gs/ekfEstimationWithNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf>]
-
+[5 <./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515-eps-converted-to.pdf> 
+<./figs/ekfEstimationWithoutNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf>]
+[6 <./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515-eps-converted-to.pdf> <./
+figs/ekfEstimationWithNoiseRatio_Znb_nA_20180515-eps-converted-to.pdf>]
+(./technicalReportSummary.bbl) 
 AED: lastpage setting LastPage
 [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 589.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 589.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 605.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 605.
  (./technicalReportSummary.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 589.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 589.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 605.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 605.
 Package rerunfilecheck Info: File `technicalReportSummary.out' has not changed.
 
-(rerunfilecheck)             Checksum: E9972D1748C356B9ABC7747FDFE1FC91;1334.
+(rerunfilecheck)             Checksum: 2A995031D6455A4AF61FEFC734E74CFA;1220.
  ) 
 Here is how much of TeX's memory you used:
- 27181 strings out of 494333
- 472850 string characters out of 6163939
- 586651 words of memory out of 5000000
- 29846 multiletter control sequences out of 15000+600000
- 46648 words of font info for 164 fonts, out of 8000000 for 9000
+ 27189 strings out of 494333
+ 473035 string characters out of 6163939
+ 586650 words of memory out of 5000000
+ 29852 multiletter control sequences out of 15000+600000
+ 47951 words of font info for 163 fonts, out of 8000000 for 9000
  372 hyphenation exceptions out of 8191
  62i,12n,56p,2544b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/bgcho/.tex
@@ -1647,10 +1647,10 @@ c/mathpazo/fplmri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
 plb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on technicalReportSummary.pdf (7 pages, 1199675 bytes).
+Output written on technicalReportSummary.pdf (7 pages, 1202286 bytes).
 PDF statistics:
- 742 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 28255 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 752 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 32359 words of extra memory for PDF output out of 35830 (max. 10000000)
 

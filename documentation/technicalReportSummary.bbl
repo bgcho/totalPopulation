@@ -1,0 +1,10 @@
+\begin{thebibliography}{-------}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[Love(1978)]{love1978resonant}
+Love, R.H.
+\newblock Resonant acoustic scattering by swimbladder-bearing fish.
+\newblock {\em The Journal of the Acoustical Society of America} {\bf 1978},
+  {\em 64},~571--580.
+
+\end{thebibliography}

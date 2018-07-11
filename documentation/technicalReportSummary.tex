@@ -146,25 +146,26 @@ The inherent limitation in resolving the vertical fish distribution from 2-D ima
 \subsection{Extendend Kalman Filter for Number Density and Depth Distribution Estimation of Dense Fish Groups}
 An Extended Kalman Filter (EKF) is designed to estimate the number density and depth distribution of a dense fish group.
 % An Extended Kalman Filter (EKF) is designed to account for acoustic attenuation caused by dense fish shoals. 
-When a fish group is sufficiently dense and the acoustic transmission frequency is near the resonance frequency of fish swim bladder scattering, acoustic wave significantly attenuates as it further propagates through the dense fish shoal. 
-This attenuation is caused by a number of factors including fish depth distribution, amount of air inside their swim bladder, number density, and acoustic transmission frequency.
+When a fish group is sufficiently dense and the acoustic transmission frequency is near the resonance frequency of fish swim bladder scattering, acoustic wave significantly attenuates as it further propagates through the dense fish group. 
 In such cases, it is desirable to compensate for the accumulated attenuation since the total population can be under-estimated.
-The presented EKF accounts for acoustic attenuation and simultaneously estimates number density and physical parameters that describe the vertical distribution of a fish group.
+This attenuation is determined by a number of factors including fish depth distribution, amount of air inside their swim bladder, number density, and acoustic transmission frequency.
+The presented EKF accounts for acoustic attenuation caused by transmission through a dense fish group and simultaneously estimates their number density and physical parameters that describe the vertical distribution.
 
-State of a fish shoal is expressed as an unknown state vector that consists of 7 parameters about a group as
+State of a fish group is expressed as an unknown state vector that consists of 7 parameters as
 
 \begin{equation}
 \label{eq:stateVec}
 \mathbf{x} = \left[z_1, H_1, z_2, H_2, r, z_\text{nb}, n_\text{AdB}\right]^{T},
 \end{equation}
 
-\noindent where, $z_1$ and $z_2$ are respectively the mean shoal depths of a fish shoal that has two layers vertically. 
+\noindent where, $z_1$ and $z_2$ are respectively the mean occupancy depths of a fish group that has two vertical layers. 
 $H_1$ and $H_2$ are respectively the vertical thickness of each fish layer and $r$ represents the fractional population of the first fish layer with mean depth $z_1$ and vertical thickness $H_1$.
-$z_\text{nb}$ and $n_\text{A,dB}$ are respectively the neutral buoyancy depth and areal number density of this fish shoal.
-For the region within the shoal that is closest to the acoustic source, the measurements are not attenuated. 
-Within this shoal region, raw scattering strength measurements can be used to infer the and initialize the shoal state vector.
-At a consecutive range step that is further into the shoal with respect to the acoustic source, the fish shoal state continuously transitions with attenuated measurements.
-Shoal state at each range step can be estimated using an EKF where the shoal state transition and measurement models are 
+% $z_\text{nb}$ and $n_\text{A,dB}$ are respectively the neutral buoyancy depth and areal number density of this fish group.
+$z_\text{nb}$ is the neutral buoyancy depth, a parameter that determines the amount of air in a fish swim bladder, and $n_\text{AdB}$ is the areal number density in decibels.
+At the leading edge of a fish group, which is closest to the acoustic source and receiver, the measurements are not attenuated. 
+Within this region, raw Scattering Strength (SS) measurements can be used to infer and initialize the state vector.
+At consecutive range steps further into the fish group with respect to the acoustic source and receiver, the state vector transitions in accordance with attenuated measurements.
+The state vector at each range step can be estimated using an EKF, where the state transition and measurement models are given as
 
 \begin{align}
 \label{eq:model}
@@ -184,19 +185,26 @@ h\left(\mathbf{x}_k;f_1\right) & h\left(\mathbf{x}_k;f_2\right) & \dots & h\left
 \end{bmatrix}^T,
 \end{equation}
 
-\noindent where $h\left(\mathbf{x}_k;f_i\right)$ is the measurement model at the $i^\text{th}$ transmission frequency among $N_f$ discrete frequency bandwidths.
+\noindent where $h\left(\mathbf{x}_k;f_i\right)$ is the measurement model at the $i^\text{th}$ acoustic transmission frequency, $f_i$, among $N_f$ discrete frequencies.
 $h\left(\mathbf{x}_k;f_i\right)$ is expressed as
 
 \begin{equation}
 \label{eq:modelMeasureMember}
-h\left(\mathbf{x}_k;f_i\right) = \overline{\text{TS}}\left(z_1, H_1, z_2, H_2, r, z_\text{nb}\right) + n_\text{AdB},
+h\left(\mathbf{x}_k;f_i\right) = \overline{\text{TS}}\left(z_1^{(k)}, H_1^{(k)}, z_2^{(k)}, H_2^{(k)}, r^{(k)}, z_\text{nb}^{(k)};f_i\right) + n_\text{AdB}^{(k)},
 \end{equation}
 
-\noindent where $\overline{\text{TS}}\left(z_1, H_1, z_2, H_2, r, z_\text{nb}\right)$ is the mean Target Strength (TS) of a swim bladder bearing fish using the Love model with the current state parameters $\mathbf{x}_k$ of the fish shoal.
-Note that the measurement model $h\left(\mathbf{x}_k;f_i\right)$ does not include attenuation, and accordingly the measurement $\mathbf{z}_k$ denotes the attenuation corrected measurement.
-This attenuation correction can be done based on the history of the estimated state vectors up to $k-1$ range step. 
-Attenuation factor at each range step calculated using the state estimate at the corresponding range step is accumulated over the range up to the $k-1$ range.
-Raw measurement at $k$ range step is then scaled up by this accumulated attenuation.
+\noindent where $\overline{\text{TS}}\left(z_1^{(k)}, H_1^{(k)}, z_2^{(k)}, H_2^{(k)}, r^{(k)}, z_\text{nb}^{(k)};f_i\right)$ is a modeled mean Target Strength (TS) of a swim bladder bearing fish \cite{love1978resonant} at current fish state $\mathbf{x}_k$ and at frequency $f_i$.
+Since the measurement model, $h\left(\mathbf{x}_k;f_i\right)$, does not account for attenuation caused by the fish group, $\mathbf{z}_k$ is the attenuation-corrected measurement.
+% Note that the measurement model $h\left(\mathbf{x}_k;f_i\right)$ does not include attenuation, and accordingly the measurement $\mathbf{z}_k$ denotes the attenuation corrected measurement.
+Attenuation in measurements is corrected by accumulating the range-dependent attenuation factor determined by the corresponding state vector at each range step.
+% The accumulated attenuation 
+% The attenuation factors at steps up to $k-1$ are calculated based on the corresponding state vectors.
+% This attenuation 
+% At $k-1^\text{th}$ step, attenuation factor is calculated using the estimated state vector.
+% Raw SS measurement at $k^\text{th}$ is then scaled up by this attenuation factor
+% This attenuation factor is then accumulated up to the $k-1^\text{th}$ range to scale up the 
+% Attenuation factor at each range step is calculated using the estimated state vector, then is accumulated over the range up to the $k-1$ range.
+% Raw SS measurement at the $k^\text{th}$ range step is then scaled up by this accumulated attenuation.
 
 Prediction step of the current EKF is given as
 
@@ -246,7 +254,7 @@ $\boldsymbol{H}_k$ is a Jacobian matrix of the measurement model evalated at the
 \end{bmatrix}.
 \end{equation}
 
-\noindent The above scheme is for a single measurement at each range step, however, this scheme can be easily extended for multiple measurements by concatenating multiple measurements and measurement models.
+\noindent This EKF for a single measurement at each range step, however, can be easily extended for multiple measurements by concatenating multiple measurements and measurement models.
 
 
 
@@ -260,43 +268,44 @@ $\boldsymbol{H}_k$ is a Jacobian matrix of the measurement model evalated at the
 
 
 \section{Results}
-\subsection{Fish Shoal State Estimation Accounting for Attenuation using the Extended Kalman Filter}
-Here, the EKF is used to estimate fish shoal state when attenuation caused by the fish shoal is present in the measurements.
-First, a synthetic scattering strength is tested to validate the current EKF model.
-Scattering strength from a fish shoal of 5 km horizontal thickness with two vertical layers is modeled as shown below.
+\subsection{State Estimation using the Extended Kalman Filter}
+Here, the EKF is used to estimate the state of a fish group when attenuation is present in measurements.
+Synthetic SS measurements from a fish group of 5 km horizontal thickness with two vertical layers (Fig. \ref{fig:configSynthetic}) are used to validate the current EKF.
+% Scattering strength from a fish group of 5 km horizontal thickness with two vertical layers is modeled as shown below.
 
 
 \begin{figure}[htp!]
   \centering
   {\includegraphics[width=0.8\textwidth]{{./figs/syntheticConfiguration20180515}.eps}}
-  \caption{Range-depth configuration of the fish shoal}
+  \caption{Range-depth configuration of the fish group}
   \label{fig:configSynthetic}
 \end{figure}
 
-\noindent Neutral buoyancy of the fish shoal is assumed to be 10 m below the sea surface and each vertical layer includes equal fish population.
-Areal fish number density along the range within the fish shoal is assumed as shown in Figure \ref{fig:naSynthetic}. The maximum areal number density is approximately 3 fish/m$^2$ at 2.5 km range.
+\noindent Neutral buoyancy of the fish group is assumed to be 10 m below the sea surface and each vertical layer includes equal fish population.
+Areal number density along the range within the fish group is shown in Fig. \ref{fig:naSynthetic}. 
+The maximum areal number density is approximately 4.5 fish/m$^2$ at 2.5 km range.
 
 \begin{figure}[htp!]
   \centering
   {\includegraphics[width=0.5\textwidth]{{./figs/nASynthetic20180515}.eps}}
-  \caption{Synthetic areal number density through the fish shoal}
+  \caption{Synthetic areal number density through the fish group}
   \label{fig:naSynthetic}
 \end{figure}
 
-\noindent Synthetic Scattering Strength (SS) from this fish shoal is shown in Figures \ref{fig:ssSyntheticWithNoise} and \ref{fig:ssSyntheticWithoutNoise}, where Figure \ref{fig:ssSyntheticWithNoise} includes a zero-mean Gaussian white noise with 3 dB standard deviation and Figure \ref{fig:ssSyntheticWithoutNoise} shows the SS without any noise.
-SS at 1465 Hz and 1600 Hz are strong at close ranges but also shows the most attenuation as shown in the in Figure \ref{fig:ssSyntheticWithoutNoise} because the resonance scattering frequency is near 1500 Hz as shown in \ref{fig:tsSynthetic}.
+\noindent Synthetic SS from this fish group is shown in Figs. \ref{fig:ssSyntheticWithNoise} and \ref{fig:ssSyntheticWithoutNoise}, where Fig. \ref{fig:ssSyntheticWithNoise} includes a zero-mean Gaussian white noise with 3 dB standard deviation and Fig. \ref{fig:ssSyntheticWithoutNoise} shows the SS without any noise.
+SS at 1465 Hz and 1600 Hz are strong at close ranges but also shows the most attenuation as shown in Fig. \ref{fig:ssSyntheticWithoutNoise} because the resonance scattering frequency is near 1500 Hz as shown in Fig. \ref{fig:tsSynthetic}.
 
 \begin{figure}[htp!]
   \centering
   {\includegraphics[width=1\textwidth]{{./figs/syntheticSSCombined_20180515}.eps}}
-  \caption{Synthetic Scattering Strength (SS) through the fish shoal with zero-mean Gaussian white noise with 3 dB standard deviation. 10 SS curves are realized at each frequency.}
+  \caption{Synthetic Scattering Strength (SS) through the fish group with zero-mean Gaussian white noise with 3 dB standard deviation. 10 SS curves are randomly realized at each frequency.}
   \label{fig:ssSyntheticWithNoise}
 \end{figure}
 
 \begin{figure}[htp!]
   \centering
   {\includegraphics[width=0.6\textwidth]{{./figs/ssSynthetic20180515}.eps}}
-  \caption{Synthetic Scattering Strength (SS) through the fish shoal without noise}
+  \caption{Synthetic Scattering Strength (SS) through the fish group without noise}
   \label{fig:ssSyntheticWithoutNoise}
 \end{figure}
 
@@ -305,28 +314,27 @@ SS at 1465 Hz and 1600 Hz are strong at close ranges but also shows the most att
 \begin{figure}[htp!]
   \centering
   {\includegraphics[width=0.5\textwidth]{{./figs/tsSynthetic20180515}.eps}}
-  \caption{Synthetic Target Strength (TS) at the front and end of the shoal}
+  \caption{Synthetic Target Strength (TS) at the front and end of the group}
   \label{fig:tsSynthetic}
 \end{figure}
 
-EKF is applied to this synthetic SS data where 10 measurements at each range step are used to predict and update the fish shoal state. 
-The measurement noise covariance matrix $\boldsymbol{Q}_k$ is a diagonal matrix since each measurement is assumed uncorrelated and noise at each frequency is assumed to be uncorrelated. 
+EKF is applied to this synthetic SS data where 10 measurements at each range step are used to predict and update the state vector. 
+The measurement noise covariance matrix $\boldsymbol{Q}_k$ is a diagonal matrix since each measurement is assumed uncorrelated and noise at each frequency is assumed uncorrelated. 
 Small random perturbation is included in $\boldsymbol{Q}_k$ to resolve a singularity issue caused when multiple measurements following an identical distribution is used.
-The process noise covariance matrix $\boldsymbol{R}_k$ is also a diagonal matrix since each state parameter is assumed uncorrelated to each other.
+The process noise covariance matrix $\boldsymbol{R}_k$ is also a diagonal matrix since each state parameter is assumed uncorrelated with each other.
 
 
-First, the EKF model shows the state estimate using data without any noise.
-The state estimate is shown in Figures \ref{fig:ekfEstimationWithoutNoise1} and \ref{fig:ekfEstimationWithoutNoise2}.
+For a synthetic data set without any noise, Figs. \ref{fig:ekfEstimationWithoutNoise1} and \ref{fig:ekfEstimationWithoutNoise2} show the state estimate using the developed EKF.
 In general, the estimation is better at closer range steps and deviates from the ground truth as the range steps increases.
-Figure \ref{fig:ekfEstimationWithoutNoise1} shows the EKF estimation of the fish shoal vertical distribution.
-Mean occupancy depth estimation of the upper and lower fish layers shown in Figure \ref{fig:ekfEstimationWithoutNoise1} (a) and (c) respectively show errors from the ground truth mean occupancy depths to within 4 \% and 20 \% with respect to their ground truth vertical thicknesses.
-Shoal vertical thickness estimation of the upper and lower fish layers shown in Figure \ref{fig:ekfEstimationWithoutNoise1} (b) and (d) respectively show errors from the ground truth vertical thicknesses to within 8 \% and 30 \% with respect to their ground truth vertical thicknesses.
-EKF estimation of the fractional population of the upper fish layer, neutral buouancy depth and areal number density are accurate to be within 1\% error with respect to their ground truth values.
+EKF estimation of the fish vertical distribution is shown in Fig. \ref{fig:ekfEstimationWithoutNoise1}.
+Mean occupancy depth estimation errors of the upper and lower fish layers (Fig. \ref{fig:ekfEstimationWithoutNoise1} (a) and (c)) are within 3 \% with respect to their ground truth vertical thicknesses.
+Vertical thickness estimation error of the upper and lower fish layers (Fig. \ref{fig:ekfEstimationWithoutNoise1} (b) and (d)) are within 20 \% with respect to their ground truth vertical thicknesses.
+EKF estimation of the fractional population of the upper fish layer, neutral buouancy depth and areal number density are accurate to be less than 1\% error with respect to their ground truth values.
 
 \begin{figure}[htp!]
   \centering
   {\includegraphics[width=0.8\textwidth]{{./figs/ekfEstimationWithoutNoiseH1_Z1_H2_Z2_20180515}.eps}}
-  \caption{Extended Kalman Filter estimation of the fish shoal depth distribution without any noise in the measurements.}
+  \caption{Extended Kalman Filter estimation of the fish depth distribution without any noise in the measurements.}
   \label{fig:ekfEstimationWithoutNoise1}
 \end{figure}
 
@@ -337,11 +345,19 @@ EKF estimation of the fractional population of the upper fish layer, neutral buo
   \label{fig:ekfEstimationWithoutNoise2}
 \end{figure}
 
+Similarly, EKF estimation results for synthetic measurements with noise are shown in Figs. \ref{fig:ekfEstimationWithNoise1} and \ref{fig:ekfEstimationWithNoise2}.
+Mean occupancy depth estimation errors of the upper and lower fish layers (Fig. \ref{fig:ekfEstimationWithNoise1} (a) and (c)) are within 15 \% with respect to their ground truth vertical thicknesses.
+Vertical thickness estimation errors of the upper and lower fish layers (Fig. \ref{fig:ekfEstimationWithoutNoise1} (b) and (d)) are within 25 \% with respect to their ground truth vertical thicknesses.
+Estimation of the fractional population of the upper fish layer, neutral buouancy depth and areal number density are accurate to be less than 10\% error with respect to their ground truth values.
+
+
+
+
 
 \begin{figure}[htp!]
   \centering
   {\includegraphics[width=0.8\textwidth]{{./figs/ekfEstimationWithNoiseZ1_H1_Z2_H2_20180515}.eps}}
-  \caption{Extended Kalman Filter estimation of the fish shoal depth distribution in the presence of zero-mean Gaussian white measurement noise with 3 dB standard deviation.}
+  \caption{Extended Kalman Filter estimation of the fish depth distribution in the presence of zero-mean Gaussian white measurement noise with 3 dB standard deviation.}
   \label{fig:ekfEstimationWithNoise1}
 \end{figure}
 
@@ -571,8 +587,8 @@ EKF estimation of the fractional population of the upper fish layer, neutral buo
 %=====================================
 % References, variant B: external bibliography
 %=====================================
-%\externalbibliography{yes}
-%\bibliography{your_external_BibTeX_file}
+\externalbibliography{yes}
+\bibliography{totalPopulation.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
